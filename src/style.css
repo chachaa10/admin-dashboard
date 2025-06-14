@@ -1,3 +1,4 @@
+/* style.css */
 *,
 *::before,
 *::after {
@@ -5,14 +6,6 @@
 }
 
 :root {
-  --text: oklch(13.441% 0.00002 271.152);
-  --icons: oklch(95.514% 0.00011 271.152);
-  --secondary-icons: oklch(18.674% 0.00002 271.152);
-  --background: oklch(90.407% 0.04856 236.959);
-  --foreground: oklch(100% 0.00011 271.152);
-  --secondary: oklch(73.47% 0.097 252.4);
-  --primary: oklch(70.182% 0.14592 56.362);
-  --accent: oklch(81.27% 0.076 64.45);
   --sidebar-width-open: min(75vw, 250px);
   --big-icon: 35px;
   --small-icon: 25px;
@@ -22,9 +15,9 @@ body {
   display: grid;
   grid-template-columns: auto 1fr;
   background-color: var(--background);
-  color: var(--icons);
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
-    'Helvetica Neue', sans-serif;
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  letter-spacing: var(--tracking-normal);
 }
 
 .sidebar {
@@ -32,6 +25,7 @@ body {
   flex-direction: column;
   gap: 3rem;
   transition: all 300ms ease;
+  box-shadow: var(--shadow-sm);
   background-color: var(--secondary);
   padding-top: 1rem;
   padding-inline: 0.5rem;
@@ -51,7 +45,7 @@ body {
 
   & svg {
     --_size: 1.1;
-    fill: var(--icons);
+    fill: var(--sidebar-foreground);
     transition: all 300ms ease;
     width: calc(var(--big-icon) * var(--_size));
     height: calc(var(--big-icon) * var(--_size));
@@ -61,7 +55,7 @@ body {
     opacity: 0;
     transition: opacity 300ms ease, max-width 300ms ease;
     max-width: 0;
-    color: var(--icons);
+    color: var(--sidebar-foreground);
     line-height: 1.8;
     white-space: nowrap;
   }
@@ -69,6 +63,7 @@ body {
 
 @media screen and (max-width: 48rem) {
   .sidebar.open + .right {
+    display: none;
     opacity: 0.3;
     overflow: hidden;
   }
@@ -79,7 +74,7 @@ body {
   gap: 1rem;
 
   & svg {
-    fill: var(--icons);
+    fill: var(--sidebar-foreground);
     width: var(--small-icon);
     height: var(--small-icon);
   }
@@ -93,8 +88,8 @@ body {
   transition: background-color 300ms ease;
   cursor: pointer;
   margin-block: 0.2rem;
-  border-radius: 0.5rem;
-  color: var(--icons);
+  border-radius: var(--radius);
+  color: var(--sidebar-foreground);
   line-height: 1.8;
   text-decoration: none;
 
@@ -107,9 +102,8 @@ body {
   }
 
   &:hover {
-    text-decoration: underline;
-    text-decoration-thickness: 2px;
-    text-underline-offset: 4px;
+    background-color: var(--sidebar-accent);
+    color: var(--sidebar-accent-foreground);
   }
 }
 
@@ -141,8 +135,9 @@ body {
 }
 
 .toggle-sidebar:hover {
-  border-radius: 1rem;
-  background-color: oklch(0% 0 0 / 0.1);
+  box-shadow: var(--shadow-2xs);
+  border-radius: var(--radius);
+  background-color: var(--sidebar-border);
 }
 
 .hidden {
@@ -160,16 +155,18 @@ body {
   align-items: center;
   gap: 0.5rem;
   width: 100%;
-  max-width: 50vw;
+  max-width: 500px;
 
   & input {
-    border: none;
-    border-radius: 1rem;
-    background-color: oklch(90.724% 0.03332 298.969);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background-color: var(--input);
     padding: 0.5rem;
     width: 100%;
+    color: var(--foreground);
 
     &::placeholder {
+      color: var(--muted-foreground);
       font-size: 0.75rem;
     }
   }
@@ -177,7 +174,7 @@ body {
 
 .icon {
   --small-icon: 1.75rem;
-  fill: var(--secondary-icons);
+  fill: var(--foreground);
   width: var(--small-icon);
   height: var(--small-icon);
 
@@ -188,14 +185,13 @@ body {
 
 .profile-right {
   display: flex;
-
   flex-shrink: 0;
   align-items: center;
   gap: 0.75rem;
 
   & svg {
     --small-icon: 1.25rem;
-    fill: var(--secondary-icons);
+    fill: var(--foreground);
     width: var(--small-icon);
     height: var(--small-icon);
 
@@ -207,14 +203,11 @@ body {
 
 .profile-picture {
   --_size: 1.5;
+  box-shadow: var(--shadow-xs);
   border-radius: 50%;
   width: calc(var(--small-icon) * var(--_size));
   height: calc(var(--small-icon) * var(--_size));
   overflow: hidden;
-
-  @media screen and (min-width: 40rem) {
-    --_size: 2;
-  }
 }
 
 .icon-profile {
@@ -230,14 +223,19 @@ body {
 
 .top {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   gap: 1rem;
   width: 100%;
+
+  @media screen and (min-width: 23.4375rem) {
+    flex-direction: row;
+  }
 }
 
 .profile-name {
   cursor: pointer;
-  color: var(--text);
+  color: var(--foreground);
   font-weight: bold;
   font-size: clamp(1rem, 2vw, 1.25rem);
 
@@ -250,27 +248,31 @@ body {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  background-color: var(--foreground);
+  box-shadow: var(--shadow-sm);
+  background-color: var(--card);
   padding: 0.5rem 1rem;
   width: 100%;
   height: min-content;
-  color: var(--text);
+  color: var(--card-foreground);
 }
 
 .bottom {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 0.25rem;
 }
 
 .bottom .profile-picture {
   --_size: 2.2;
+  display: none;
   flex-shrink: 0;
   width: calc(var(--small-icon) * var(--_size));
   height: calc(var(--small-icon) * var(--_size));
 
   @media screen and (min-width: 40rem) {
     --_size: 3;
+    display: block;
   }
 }
 
@@ -290,13 +292,13 @@ body {
   width: 100%;
 
   & h1 {
-    color: var(--text);
+    color: var(--foreground);
     font-weight: bold;
     font-size: clamp(var(--ff-size), 2vw, 1.25rem);
   }
 
   & p {
-    color: var(--text);
+    color: var(--muted-foreground);
     font-weight: 500;
     font-size: var(--ff-size);
   }
@@ -309,19 +311,22 @@ body {
 
   & button {
     cursor: pointer;
+    box-shadow: var(--shadow-xs);
     border: none;
-    border-radius: 1rem;
-    background-color: var(--secondary);
+    border-radius: var(--radius);
+    background-color: var(--primary);
     padding: 0.5rem 1rem;
-    color: white;
+    color: var(--primary-foreground);
     font-weight: bold;
 
     &:hover {
-      background-color: oklch(from var(--secondary) calc(l * 0.8) c h);
+      box-shadow: var(--shadow-sm);
+      background-color: oklch(from var(--primary) calc(l * 0.9) c h);
     }
 
     &:focus {
-      background-color: oklch(from var(--secondary) calc(l * 0.6) c h);
+      box-shadow: var(--shadow);
+      background-color: oklch(from var(--primary) calc(l * 0.7) c h);
     }
 
     @media screen and (min-width: 40rem) {
@@ -329,7 +334,7 @@ body {
     }
   }
 
-  @media screen and (min-width: 40rem) {
+  @media screen and (min-width: 26.5625rem) {
     flex-direction: row;
     gap: 0.5rem;
   }
@@ -342,7 +347,7 @@ body {
   padding: 1rem;
 
   & h3 {
-    color: var(--text);
+    color: var(--foreground);
     font-weight: bold;
     font-size: clamp(1rem, 2vw, 1.25rem);
   }
@@ -363,21 +368,22 @@ body {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  box-shadow: var(--shadow-sm);
   border-left: 0.25rem solid var(--primary);
-  border-radius: 0.5rem;
-  background-color: var(--foreground);
+  border-radius: var(--radius);
+  background-color: var(--card);
   padding: 1.5rem 1rem;
-  color: var(--text);
+  color: var(--card-foreground);
 
   & .card-title {
-    color: var(--text);
+    color: var(--card-foreground);
     font-weight: bold;
     font-size: clamp(1rem, 2vw, 1.25rem);
   }
 
   & .card-description {
     flex-grow: 1;
-    color: var(--text);
+    color: var(--muted-foreground);
     font-weight: 400;
     font-size: clamp(0.75rem, 2vw, 1rem);
   }
@@ -392,6 +398,12 @@ body {
       --small-icon: 1.5rem;
       width: var(--small-icon);
       height: var(--small-icon);
+      fill: var(--muted-foreground);
+      transition: fill 200ms ease;
+
+      &:hover {
+        fill: var(--primary);
+      }
 
       @media screen and (min-width: 40rem) {
         --small-icon: 2rem;

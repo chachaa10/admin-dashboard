@@ -7,7 +7,7 @@ const projects = [
   {
     title: "Because they're so purr-suasive!",
     description:
-      'Cat ipsum dolor sit amet, hiding behind the couch until lured out by a feathery toy. I like frogs and 0 gravity at four in the morning wake up owner meeeeeeooww scratch at legs and beg for food then cry and yowl until they wake up at two pm jump on window and sleep while1.5observing the bootyful cat next door that u really like but who already has a boyfriend end up making babies with her and let her move in. Stare at the wall, play with food and get confused by dust love fish pet right here, no not there, here, no fool, right here that other cat smells funny you should really give me all the treats because i smell the best and omg you finally got the right spot and i love you right now.',
+      'Cat ipsum dolor sit amet, hiding behind the couch until lured out by a feathery toy. I like frogs and 0 gravity at four in the morning wake up owner meeeeeeooww scratch at legs and beg for food then cry and yowl until they wake up at two pm jump on window and sleep while 1.5 observing the bootyful cat next door that u really like but who already has a boyfriend end up making babies with her and let her move in. Stare at the wall, play with food and get confused by dust love fish pet right here, no not there, here, no fool, right here that other cat smells funny you should really give me all the treats because i smell the best and omg you finally got the right spot and i love you right now.',
   },
   {
     title: "What do you call a cat that's been caught stealing?",

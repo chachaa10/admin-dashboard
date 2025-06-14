@@ -38,13 +38,6 @@ sidebarToggle.addEventListener('click', toggleSidebar);
 document.addEventListener('click', closeSidebarOutside);
 document.addEventListener('keydown', closeSidebarEscape);
 
-if (window.matchMedia('(min-width: 768px)').matches) {
-  if (!sidebar.classList.contains('open')) {
-    toggleSidebar();
-  }
-}
-
-// --- Link Click Behavior ---
 links.forEach((link) => {
   link.addEventListener('click', (e) => {
     e.preventDefault();
