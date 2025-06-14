@@ -1,15 +1,24 @@
 const toggleSidebar = document.getElementById('toggle-sidebar');
-const sidebar = document.getElementById('sidebar');
-const dashboardTitle = document.getElementById('dashboard-title');
-const spanTitleS = document.querySelectorAll('.flex-opt span');
-const right = document.querySelector('.right');
 
-toggleSidebar.addEventListener('click', () => {
+function openSidebar() {
+  const sidebar = document.getElementById('sidebar');
   sidebar.classList.toggle('open');
-  right.classList.toggle('hidden');
+
+  const dashboardTitle = document.getElementById('dashboard-title');
   dashboardTitle.classList.toggle('hidden');
 
+  const spanTitleS = document.querySelectorAll('.flex-opt span');
   spanTitleS.forEach((span) => {
     span.classList.toggle('hidden');
   });
+}
+
+function hideContent() {
+  const right = document.querySelector('.right');
+  right.classList.toggle('hidden');
+}
+
+toggleSidebar.addEventListener('click', () => {
+  openSidebar();
+  hideContent();
 });

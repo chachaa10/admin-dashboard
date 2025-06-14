@@ -1,20 +1,19 @@
 *,
 *::before,
 *::after {
-  outline: 1px solid red;
+  /* outline: 1px solid red; */
 }
 
 :root {
-  --text: oklch(92.797% 0.00011 271.152);
-  --icons: oklch(21.701% 0.07459 26.02);
-  --secondary-icons: oklch(93.421% 0.02062 67.459);
-  --background: oklch(22.17% 0.02 254.12);
-  --foreground: oklch(26.17% 0.02 254.84);
-  --primary: oklch(73.47% 0.097 252.4);
-  --secondary: oklch(75.45% 0.071 36.56);
+  --text: oklch(13.441% 0.00002 271.152);
+  --icons: oklch(95.514% 0.00011 271.152);
+  --secondary-icons: oklch(18.674% 0.00002 271.152);
+  --background: oklch(90.407% 0.04856 236.959);
+  --foreground: oklch(100% 0.00011 271.152);
+  --secondary: oklch(73.47% 0.097 252.4);
+  --primary: oklch(70.182% 0.14592 56.362);
   --accent: oklch(81.27% 0.076 64.45);
   --sidebar-width-open: min(75vw, 250px);
-  --sidebar-width-open: min(75dvw, 250px);
   --big-icon: 35px;
   --small-icon: 25px;
 }
@@ -32,14 +31,13 @@ body {
   display: flex;
   flex-direction: column;
   gap: 3rem;
-  z-index: 100;
   transition: all 300ms ease;
   background-color: var(--secondary);
   padding-top: 1rem;
   padding-inline: 0.5rem;
   height: 100%;
   overflow: hidden;
-  font-weight: bold;
+  font-weight: 900;
 
   &.open {
     width: var(--sidebar-width-open);
@@ -52,10 +50,11 @@ body {
   }
 
   & svg {
+    --_size: 1.1;
     fill: var(--icons);
     transition: all 300ms ease;
-    width: var(--big-icon);
-    height: var(--big-icon);
+    width: calc(var(--big-icon) * var(--_size));
+    height: calc(var(--big-icon) * var(--_size));
   }
 
   & .dashboard-title {
@@ -68,9 +67,10 @@ body {
   }
 }
 
-@media screen and (max-width: 40rem) {
+@media screen and (max-width: 48rem) {
   .sidebar.open + .right {
-    display: none;
+    opacity: 0.3;
+    overflow: hidden;
   }
 }
 
@@ -117,7 +117,7 @@ body {
 
   & span {
     opacity: 1;
-    max-width: 150px;
+    max-width: fit-content;
   }
 }
 
@@ -139,6 +139,7 @@ body {
 }
 
 .toggle-sidebar:hover {
+  border-radius: 1rem;
   background-color: oklch(0% 0 0 / 0.1);
 }
 
@@ -154,12 +155,6 @@ body {
   &:has(.sidebar.open) {
     opacity: 0.1;
   }
-
-  & svg {
-    fill: var(--secondary-icons);
-    width: var(--small-icon);
-    height: var(--small-icon);
-  }
 }
 
 .search-bar {
@@ -167,13 +162,13 @@ body {
   align-items: center;
   gap: 0.5rem;
   width: 100%;
-  max-width: 300px;
+  max-width: 50vw;
 
   & input {
     border: none;
-    border-radius: 1.5rem;
-    background-color: oklch(92.573% 0.01273 255.643);
-    padding: 0.25rem 0.5rem;
+    border-radius: 1rem;
+    background-color: oklch(90.724% 0.03332 298.969);
+    padding: 0.5rem;
     width: 100%;
 
     &::placeholder {
@@ -182,12 +177,15 @@ body {
   }
 }
 
-.profile-picture {
-  --_size: 1.1;
-  border-radius: 50%;
-  width: calc(var(--small-icon) * var(--_size));
-  height: calc(var(--small-icon) * var(--_size));
-  overflow: hidden;
+.icon {
+  --small-icon: 1.75rem;
+  fill: var(--secondary-icons);
+  width: var(--small-icon);
+  height: var(--small-icon);
+
+  @media screen and (min-width: 40rem) {
+    --small-icon: 2.5rem;
+  }
 }
 
 .profile-right {
@@ -195,29 +193,145 @@ body {
 
   flex-shrink: 0;
   align-items: center;
-  gap: 1rem;
+  gap: 0.75rem;
+
+  & svg {
+    --small-icon: 1.25rem;
+    fill: var(--secondary-icons);
+    width: var(--small-icon);
+    height: var(--small-icon);
+
+    @media screen and (min-width: 40rem) {
+      --small-icon: 2rem;
+    }
+  }
+}
+
+.profile-picture {
+  --_size: 1.5;
+  border-radius: 50%;
+  width: calc(var(--small-icon) * var(--_size));
+  height: calc(var(--small-icon) * var(--_size));
+  overflow: hidden;
+
+  @media screen and (min-width: 40rem) {
+    --_size: 2;
+  }
 }
 
 .icon-profile {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  cursor: pointer;
+
+  @media screen and (min-width: 40rem) {
+    gap: 1rem;
+  }
 }
 
 .top {
   display: flex;
   justify-content: space-between;
-  align-items: center;
   gap: 1rem;
-  background-color: var(--foreground);
-  padding-left: 1rem;
   width: 100%;
-  height: var(--big-icon);
 }
 
 .profile-name {
-  padding-right: 0.5rem;
+  cursor: pointer;
   color: var(--text);
   font-weight: bold;
-  font-size: clamp(1rem, 2vw, 1.5rem);
+  font-size: clamp(1rem, 2vw, 1.25rem);
+
+  & img {
+    object-fit: cover;
+  }
+}
+
+.top-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background-color: var(--foreground);
+  padding: 0.5rem 1rem;
+  width: 100%;
+  height: min-content;
+  color: var(--text);
+}
+
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bottom .profile-picture {
+  --_size: 2.2;
+  flex-shrink: 0;
+  width: calc(var(--small-icon) * var(--_size));
+  height: calc(var(--small-icon) * var(--_size));
+
+  @media screen and (min-width: 40rem) {
+    --_size: 3;
+  }
+}
+
+.left-profile {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.greeting {
+  --ff-size: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+
+  & h1 {
+    color: var(--text);
+    font-weight: bold;
+    font-size: clamp(var(--ff-size), 2vw, 1.25rem);
+  }
+
+  & p {
+    color: var(--text);
+    font-size: var(--ff-size);
+  }
+}
+
+.activity-button {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+
+  & button {
+    cursor: pointer;
+    border: none;
+    border-radius: 1rem;
+    background-color: var(--secondary);
+    padding: 0.5rem 1rem;
+    color: white;
+    font-weight: bold;
+
+    &:hover {
+      background-color: oklch(from var(--secondary) calc(l * 0.8) c h);
+    }
+
+    &:focus {
+      background-color: oklch(from var(--secondary) calc(l * 0.6) c h);
+    }
+
+    @media screen and (min-width: 40rem) {
+      padding: 0.75rem 1.5rem;
+    }
+  }
+
+  @media screen and (min-width: 40rem) {
+    flex-direction: row;
+    gap: 0.5rem;
+  }
 }
