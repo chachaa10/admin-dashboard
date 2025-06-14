@@ -107,7 +107,9 @@ body {
   }
 
   &:hover {
-    background-color: oklch(0% 0 0 / 0.1);
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
   }
 }
 
@@ -149,12 +151,8 @@ body {
 
 .right {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   transition: all 300ms ease;
-
-  &:has(.sidebar.open) {
-    opacity: 0.1;
-  }
 }
 
 .search-bar {
@@ -299,6 +297,7 @@ body {
 
   & p {
     color: var(--text);
+    font-weight: 500;
     font-size: var(--ff-size);
   }
 }
