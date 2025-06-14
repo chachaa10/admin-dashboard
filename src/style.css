@@ -1,0 +1,223 @@
+*,
+*::before,
+*::after {
+  outline: 1px solid red;
+}
+
+:root {
+  --text: oklch(92.797% 0.00011 271.152);
+  --icons: oklch(21.701% 0.07459 26.02);
+  --secondary-icons: oklch(93.421% 0.02062 67.459);
+  --background: oklch(22.17% 0.02 254.12);
+  --foreground: oklch(26.17% 0.02 254.84);
+  --primary: oklch(73.47% 0.097 252.4);
+  --secondary: oklch(75.45% 0.071 36.56);
+  --accent: oklch(81.27% 0.076 64.45);
+  --sidebar-width-open: min(75vw, 250px);
+  --sidebar-width-open: min(75dvw, 250px);
+  --big-icon: 35px;
+  --small-icon: 25px;
+}
+
+body {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  background-color: var(--background);
+  color: var(--icons);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
+    'Helvetica Neue', sans-serif;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  z-index: 100;
+  transition: all 300ms ease;
+  background-color: var(--secondary);
+  padding-top: 1rem;
+  padding-inline: 0.5rem;
+  height: 100%;
+  overflow: hidden;
+  font-weight: bold;
+
+  &.open {
+    width: var(--sidebar-width-open);
+
+    & .dashboard-title {
+      display: block;
+      opacity: 1;
+      width: 100%;
+    }
+  }
+
+  & svg {
+    fill: var(--icons);
+    transition: all 300ms ease;
+    width: var(--big-icon);
+    height: var(--big-icon);
+  }
+
+  & .dashboard-title {
+    opacity: 0;
+    transition: opacity 300ms ease, max-width 300ms ease;
+    max-width: 0;
+    color: var(--icons);
+    line-height: 1.8;
+    white-space: nowrap;
+  }
+}
+
+@media screen and (max-width: 40rem) {
+  .sidebar.open + .right {
+    display: none;
+  }
+}
+
+.sidebar-options {
+  display: grid;
+  gap: 1rem;
+
+  & svg {
+    fill: var(--icons);
+    width: var(--small-icon);
+    height: var(--small-icon);
+  }
+}
+
+.flex-opt {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  transition: background-color 300ms ease;
+  cursor: pointer;
+  margin-block: 0.2rem;
+  border-radius: 0.5rem;
+  color: var(--icons);
+  line-height: 1.8;
+  text-decoration: none;
+
+  & span {
+    opacity: 0;
+    transition: opacity 300ms ease, max-width 300ms ease;
+    max-width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  &:hover {
+    background-color: oklch(0% 0 0 / 0.1);
+  }
+}
+
+.sidebar.open .flex-opt {
+  justify-content: flex-start;
+  padding-left: 2rem;
+
+  & span {
+    opacity: 1;
+    max-width: 150px;
+  }
+}
+
+.toggle-sidebar {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 300ms ease;
+  cursor: pointer;
+  border: none;
+  background-color: var(--secondary);
+  width: 100%;
+}
+
+.sidebar.open .toggle-sidebar {
+  justify-content: flex-start;
+  padding-left: 1.5rem;
+}
+
+.toggle-sidebar:hover {
+  background-color: oklch(0% 0 0 / 0.1);
+}
+
+.hidden {
+  display: none;
+}
+
+.right {
+  display: flex;
+  justify-content: space-between;
+  transition: all 300ms ease;
+
+  &:has(.sidebar.open) {
+    opacity: 0.1;
+  }
+
+  & svg {
+    fill: var(--secondary-icons);
+    width: var(--small-icon);
+    height: var(--small-icon);
+  }
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  max-width: 300px;
+
+  & input {
+    border: none;
+    border-radius: 1.5rem;
+    background-color: oklch(92.573% 0.01273 255.643);
+    padding: 0.25rem 0.5rem;
+    width: 100%;
+
+    &::placeholder {
+      font-size: 0.75rem;
+    }
+  }
+}
+
+.profile-picture {
+  --_size: 1.1;
+  border-radius: 50%;
+  width: calc(var(--small-icon) * var(--_size));
+  height: calc(var(--small-icon) * var(--_size));
+  overflow: hidden;
+}
+
+.profile-right {
+  display: flex;
+
+  flex-shrink: 0;
+  align-items: center;
+  gap: 1rem;
+}
+
+.icon-profile {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  background-color: var(--foreground);
+  padding-left: 1rem;
+  width: 100%;
+  height: var(--big-icon);
+}
+
+.profile-name {
+  padding-right: 0.5rem;
+  color: var(--text);
+  font-weight: bold;
+  font-size: clamp(1rem, 2vw, 1.5rem);
+}
