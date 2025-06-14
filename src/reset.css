@@ -78,8 +78,8 @@ a:not([class]) {
   text-decoration-skip-ink: auto;
 }
 
-ul[role='list'],
-ol[role='list'] {
+ul,
+ol {
   list-style: none;
 }
 
