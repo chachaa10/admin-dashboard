@@ -18,7 +18,7 @@ for (const { title, description } of announcements) {
   const announcementList = document.createElement('li');
   announcementList.classList.add('announcement-list');
   announcementList.innerHTML = `
-    <h2>${title}</h2>
+    <h4>${title}</h4>
     <p>${description}</p>
   `;
 
