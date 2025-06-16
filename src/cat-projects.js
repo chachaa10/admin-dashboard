@@ -38,23 +38,23 @@ for (const { title, description } of projects) {
   <h4 class="project-title">${title}</h4>
   <p class="project-description">${description}</p>
   <div class="project-buttons">
-    <buttton aria-label="Bookmark">
+    <button aria-label="Bookmark">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
         <path d="M17,18L12,15.82L7,18V5H17M17,3H7A2,2 0 0,0 5,5V21L12,18L19,21V5C19,3.89 18.1,3 17,3Z" />
       </svg>
-    </buttton>
-    <buttton aria-label="Delete">
+    </button>
+    <button aria-label="Delete">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
         <path
           d="M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19M8,9H16V19H8V9M15.5,4L14.5,3H9.5L8.5,4H5V6H19V4H15.5Z" />
       </svg>
-    </buttton>
-    <buttton aria-label="Share">
+    </button>
+    <button aria-label="Share">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
         <path
           d="M14,5V9C7,10 4,15 3,20C5.5,16.5 9,14.9 14,14.9V19L21,12L14,5M16,9.83L18.17,12L16,14.17V12.9H14C11.93,12.9 10.07,13.28 8.34,13.85C9.74,12.46 11.54,11.37 14.28,11L16,10.73V9.83Z" />
       </svg>
-    </buttton>
+    </button>
   </div>
   `;
 
