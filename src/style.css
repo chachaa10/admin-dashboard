@@ -411,3 +411,18 @@ body {
     }
   }
 }
+
+.announcements {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+
+  & .announcement-card {
+    box-shadow: var(--shadow-sm);
+    border-radius: var(--radius);
+    background-color: var(--card);
+    padding: 1.5rem 1rem;
+    color: var(--card-foreground);
+  }
+}
