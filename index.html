@@ -28,6 +28,7 @@
     <script src="src/cat-projects.js" defer></script>
     <script src="src/theme-switcher.js" defer></script>
     <script src="src/announcement.js" defer></script>
+    <script src="src/trending.js" defer></script>
   </head>
   <body>
     <aside class="sidebar" id="sidebar">
@@ -171,14 +172,20 @@
         </div>
       </div>
 
-      <main class="bottom-section">
+      <main>
+        <div class="sidebar-right">
+          <section class="announcements">
+            <h3>Announcements</h3>
+            <ul class="announcement-card"></ul>
+          </section>
+          <section class="trending">
+            <h3>Trending</h3>
+            <ul class="trending-card"></ul>
+          </section>
+        </div>
         <section class="projects">
           <h3>Your Projects</h3>
           <ul class="project-cards"></ul>
-        </section>
-        <section class="announcements">
-          <h3>Announcements</h3>
-          <ul class="announcement-card"></ul>
         </section>
       </main>
     </div>

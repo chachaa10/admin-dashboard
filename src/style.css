@@ -209,6 +209,7 @@ body {
   width: calc(var(--small-icon) * var(--_size));
   height: calc(var(--small-icon) * var(--_size));
   overflow: hidden;
+  object-fit: cover;
 }
 
 .icon-profile {
@@ -356,7 +357,7 @@ h3 {
 
 .project-cards {
   display: grid;
-  grid-auto-columns: min(100%, 60ch);
+  grid-template-columns: 1fr;
   gap: 1.5rem;
 
   @media screen and (min-width: 40rem) {
@@ -413,17 +414,90 @@ h3 {
   }
 }
 
-.announcements {
+.announcement-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 1rem;
+
+  &:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+}
+
+.announcements,
+.trending {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
   padding: 1rem;
+}
 
-  & .announcement-card {
-    box-shadow: var(--shadow-sm);
-    border-radius: var(--radius);
-    background-color: var(--card);
-    padding: 1.5rem 1rem;
-    color: var(--card-foreground);
+.announcement-card,
+.trending-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  box-shadow: var(--shadow-sm);
+  border-radius: var(--radius);
+  background-color: var(--card);
+  padding: 1.25rem;
+  color: var(--card-foreground);
+}
+
+.trending-card {
+  display: grid;
+  grid-template-columns: 1fr;
+
+  @media screen and (min-width: 520px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media screen and (min-width: 1024px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.trending-list {
+  display: flex;
+  gap: 0.5rem;
+
+  & div {
+    flex-shrink: 0;
+  }
+
+  & .trending-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    & p {
+      overflow: hidden;
+      color: var(--muted-foreground);
+      font-weight: 400;
+      font-size: clamp(0.75rem, 2vw, 1rem);
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 64rem) {
+  main {
+    flex-direction: row;
+  }
+
+  .sidebar-right {
+    order: 2;
+  }
+
+  .projects {
+    order: 1;
   }
 }
