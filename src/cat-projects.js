@@ -32,12 +32,12 @@ const projects = [
 ];
 
 for (const { title, description } of projects) {
-  const card = document.createElement('li');
-  card.classList.add('card');
-  card.innerHTML = `
-  <h4 class="card-title">${title}</h4>
-  <p class="card-description">${description}</p>
-  <div class="card-buttons">
+  const projectCard = document.createElement('li');
+  projectCard.classList.add('project-list');
+  projectCard.innerHTML = `
+  <h4 class="project-title">${title}</h4>
+  <p class="project-description">${description}</p>
+  <div class="project-buttons">
     <buttton aria-label="Bookmark">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
         <path d="M17,18L12,15.82L7,18V5H17M17,3H7A2,2 0 0,0 5,5V21L12,18L19,21V5C19,3.89 18.1,3 17,3Z" />
@@ -58,6 +58,6 @@ for (const { title, description } of projects) {
   </div>
   `;
 
-  const cards = document.querySelector('.cards');
-  cards.appendChild(card);
+  const projectCards = document.querySelector('.project-cards');
+  projectCards.appendChild(projectCard);
 }

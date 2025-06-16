@@ -160,7 +160,7 @@ body {
   & input {
     border: 1px solid var(--border);
     border-radius: var(--radius);
-    background-color: var(--input);
+    background-color: var(--background);
     padding: 0.5rem;
     width: 100%;
     color: var(--foreground);
@@ -186,11 +186,12 @@ body {
 .profile-right {
   display: flex;
   flex-shrink: 0;
+  justify-content: space-between;
   align-items: center;
   gap: 0.75rem;
 
   & svg {
-    --small-icon: 1.25rem;
+    --small-icon: 1.5em;
     fill: var(--foreground);
     width: var(--small-icon);
     height: var(--small-icon);
@@ -345,15 +346,15 @@ body {
   flex-direction: column;
   gap: 0.5rem;
   padding: 1rem;
-
-  & h3 {
-    color: var(--foreground);
-    font-weight: bold;
-    font-size: clamp(1rem, 2vw, 1.25rem);
-  }
 }
 
-.cards {
+h3 {
+  color: var(--foreground);
+  font-weight: bold;
+  font-size: clamp(1rem, 2vw, 1.5rem);
+}
+
+.project-cards {
   display: grid;
   grid-auto-columns: min(100%, 60ch);
   gap: 1.5rem;
@@ -364,31 +365,31 @@ body {
   }
 }
 
-.card {
+.project-list {
   display: flex;
   flex-direction: column;
   gap: 1rem;
   box-shadow: var(--shadow-sm);
-  border-left: 0.25rem solid var(--primary);
+  border-left: 0.5rem solid var(--primary);
   border-radius: var(--radius);
   background-color: var(--card);
   padding: 1.5rem 1rem;
   color: var(--card-foreground);
 
-  & .card-title {
+  & .project-title {
     color: var(--card-foreground);
     font-weight: bold;
     font-size: clamp(1rem, 2vw, 1.25rem);
   }
 
-  & .card-description {
+  & .project-description {
     flex-grow: 1;
     color: var(--muted-foreground);
     font-weight: 400;
     font-size: clamp(0.75rem, 2vw, 1rem);
   }
 
-  & .card-buttons {
+  & .project-buttons {
     display: flex;
     justify-content: flex-end;
     gap: 1rem;
