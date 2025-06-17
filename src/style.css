@@ -394,21 +394,23 @@ h3 {
     display: flex;
     justify-content: flex-end;
     gap: 1rem;
-    cursor: pointer;
+
+    & button {
+      cursor: pointer;
+      border: none;
+    }
 
     & svg {
-      --small-icon: 1.5rem;
-      width: var(--small-icon);
-      height: var(--small-icon);
+      --small-icon: 2rem;
       fill: var(--muted-foreground);
       transition: fill 200ms ease;
+      border: none;
+      background-color: var(--card);
+      width: var(--small-icon);
+      height: var(--small-icon);
 
       &:hover {
         fill: var(--primary);
-      }
-
-      @media screen and (min-width: 40rem) {
-        --small-icon: 2rem;
       }
     }
   }
