@@ -32,7 +32,7 @@ const projects = [
 ];
 
 for (const { title, description } of projects) {
-  const projectCard = document.createElement('li');
+  const projectCard = document.createElement('article');
   projectCard.classList.add('project-list');
   projectCard.innerHTML = `
   <h4 class="project-title">${title}</h4>
