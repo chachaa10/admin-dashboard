@@ -20,7 +20,11 @@ function toggleSidebar() {
 }
 
 function closeSidebarOutside(event) {
-  if (sidebar.classList.contains('open') && !sidebar.contains(event.target) && !sidebarToggle.contains(event.target)) {
+  if (
+    sidebar.classList.contains('open') &&
+    !sidebar.contains(event.target) &&
+    !sidebarToggle.contains(event.target)
+  ) {
     toggleSidebar();
   }
 }

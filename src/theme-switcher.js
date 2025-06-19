@@ -38,8 +38,10 @@ themeSwitcher.addEventListener('click', (event) => {
   applyTheme(newTheme);
 });
 
-window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (event) => {
-  if (!localStorage.getItem('theme')) {
-    applyTheme(event.matches ? 'dark' : 'light');
-  }
-});
+window
+  .matchMedia('(prefers-color-scheme: dark)')
+  .addEventListener('change', (event) => {
+    if (!localStorage.getItem('theme')) {
+      applyTheme(event.matches ? 'dark' : 'light');
+    }
+  });

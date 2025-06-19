@@ -6,11 +6,13 @@ const announcements = [
   },
   {
     title: 'Meow-gical Community Share Day!',
-    description: "Come share your favorite toys and sunbeam spots with us! It'll be the cat's pajamas!",
+    description:
+      "Come share your favorite toys and sunbeam spots with us! It'll be the cat's pajamas!",
   },
   {
     title: 'New Squeaky Toy (Privacy Policy)!',
-    description: "We've updated our rules for napping and snuggling. Take a peek if you're curious!",
+    description:
+      "We've updated our rules for napping and snuggling. Take a peek if you're curious!",
   },
 ];
 
